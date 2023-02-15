@@ -48,7 +48,7 @@ function update_image(canvas, img){
     img.src = dataURL;
 }
 
-// function draw_square_cursor(canvas_info, background_img, cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y) {
+// function draw_square(canvas_info, background_img, cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y) {
 //     const canvas = canvas_info;
 //     const ctx = canvas.getContext("2d", { alpha: false });
 //     const current_square = largest_drawable_square(cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y);
@@ -65,26 +65,26 @@ function update_image(canvas, img){
 //     }
 // }
 
-function largest_drawable_square_cursor(cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y) {
+function largest_drawable_square(start_x, end_x, start_y, end_y) {
     let height = 0; //Positive values down, negative values up.
     let width = 0; //positive values to the right, negative to the left.
 
     //checks which quadrant mouse is in relation to the initially clicked point (think unit circle quadrants or whatever)
     let quadrant = "top_right";
 
-    if (cursor_end_y - cursor_start_y > 0) {
+    if (end_y - start_y > 0) {
         quadrant = "bottom_right";
     }
 
-    if (cursor_end_x - cursor_start_x < 0) {
+    if (end_x - start_x < 0) {
         quadrant = "bottom_left";
-        if (cursor_end_y - cursor_start_y < 0) {
+        if (end_y - start_y < 0) {
         quadrant = "top_left";
         }
     }
 
-    const square_width = cursor_end_x - cursor_start_x;
-    const square_height = cursor_end_y - cursor_start_y;
+    const square_width = end_x - start_x;
+    const square_height = end_y - start_y;
     //finds the cursor x or y position which would give the greatest width or height (both?)
     //current mouse position is in top right or bottom left quadrant (quadrant top_right or bottom_left)
     if (quadrant == "top_right" || quadrant == "bottom_left") {
@@ -108,13 +108,13 @@ function largest_drawable_square_cursor(cursor_start_x, cursor_end_x, cursor_sta
         height = width;
         }
     }
-    return { cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y, width, height };
+    return { start_x, end_x, start_y, end_y, width, height };
 }
 
 
 
-//---------------------------FILER-------------------------
+//---------------------------FILES-------------------------
 
-function lastInn(filnavn) {
-    return fetch(filnavn).then((response) => response.text() );
+function load(file_name) {
+    return fetch(file_name).then((response) => response.text() );
 }
