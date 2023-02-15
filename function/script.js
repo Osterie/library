@@ -8,7 +8,6 @@ function multiply_string(string, times){
     return new_string
 }
 
-
 //---------------------------MATH------------------------------
 
 //Returns angle between two vectors, unit can be "deg" or radians
