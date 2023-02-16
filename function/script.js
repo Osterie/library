@@ -117,3 +117,5 @@ function largest_drawable_square(start_x, end_x, start_y, end_y) {
 function load(file_name) {
     return fetch(file_name).then((response) => response.text() );
 }
+
+// remove me
