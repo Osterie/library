@@ -1,89 +1,3 @@
-//----------------------GENERAL-----------------------------
-
-function multiply_string(string, times){
-    new_string = string
-    for (let i = 0; i < times; i++) {
-        new_string += string
-    }
-    return new_string
-}
-  
-//takes axis as arguments, if one of the axis of object 2 is between the two axis of object 1, returns true
-function object_collides(object_1_lower, object_1_upper, object_2_lower, object_2_upper){
-    // object 2 lower value axis is between object 1 lower value of axis and object 1 upper value of axis
-    if (is_between_or_equal(object_2_lower, object_1_lower, object_1_upper)){
-        return true
-    }
-    // object 2 upper value axis is between object 1 lower value of axis and object 1 upper value of axis
-    else if (is_between_or_equal(object_2_upper, object_1_lower, object_1_upper)){
-        return true
-}
-return false
-}
-
-function is_between_or_equal(value_1, value_2, value_3){
-    const value_array = sort_numerically([value_1, value_2, value_3])
-    if (value_array[1] === value_1){
-        return true
-}
-return false
-}
-
-function sort_numerically(array){
-    array.sort(function(a, b) {return a - b;});
-    return array
-}
-
-//can return can not return lower_limit-1 or upper_limit
-function random_integer_in_range(lower_limit, upper_limit){
-    return Math.floor( (Math.random() * (upper_limit - lower_limit)) + lower_limit)
-}
-
-function largest(number_1, number_2){
-    if (number_1 >= number_2){
-      return number_1
-    }
-    return number_2
-  }
-  
-  function smallest(number_1, number_2){
-    if (number_1 <= number_2){
-      return number_1
-    }
-    return number_2
-  }
-
-function clear_all_intervals(){
-    for (let i = 0; i < 100; i++) {
-      window.clearInterval(i)    
-    }
-  }
-
-//---------------------------MATH------------------------------
-
-//Returns angle between two vectors, unit can be "deg" or radians
-//vectors must be given in form [x, y]
-function v2a(vector1, vector2, unit) {
-    const vector1_length = Math.sqrt(vector1[0] ** 2 + vector1[1] ** 2);
-    const vector2_length = Math.sqrt(vector2[0] ** 2 + vector2[1] ** 2);
-  
-    if (vector1_length == 0 || vector2_length == 0) {
-      return NaN;
-    }
-    const vector_product = vector1[0] * vector2[0] + vector1[1] * vector2[1];
-    //angle as degrees
-    if (unit == "deg") {
-      const angle = (Math.acos(vector_product / (vector1_length * vector2_length)) * 180) / Math.PI;
-      return angle;
-    }
-  
-    //angle as radians
-    else {
-      const angle = Math.acos(vector_product / (vector1_length * vector2_length));
-      return angle;
-    }
-}
-
 
 //---------------------CANVAS, DOM-----------------------
 
@@ -129,29 +43,15 @@ function draw_background(canvas, color){
     ctx = canvas.getContext("2d");
     ctx.fillStyle = color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }
+}
   
 
-function create_hsl_expression(hue, saturation, lightness){
-    return `hsl( ${hue}, ${saturation}%, ${lightness}%)`
-}
-
-function text_to_element(text, element){
-    element.innerHTML = text
-}
-
-function get_cursor_position(event) {
-//finds the absolute coordinates clicked, given as distence from top left.
-return [event.offsetX, event.offsetY];
-}
-
-function update_image(canvas, img){
+  function update_image(canvas, img){
     dataURL = canvas.toDataURL();
     img.src = dataURL;
 }
 
-function draw_square(canvas_info, background_img, cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y) {
-    const canvas = canvas_info;
+function draw_square(canvas, background_img, cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y) {
     const ctx = canvas.getContext("2d", { alpha: false });
     const current_square = largest_drawable_square(cursor_start_x, cursor_end_x, cursor_start_y, cursor_end_y);
 
@@ -211,12 +111,4 @@ function largest_drawable_square(start_x, end_x, start_y, end_y) {
         }
     }
     return { start_x, end_x, start_y, end_y, width, height };
-}
-
-
-
-//---------------------------FILES-------------------------
-
-async function load(file_name) {
-    return await fetch(file_name).then((response) => response.text() );
 }
