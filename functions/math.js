@@ -22,3 +22,8 @@ function v2a(vector1, vector2, unit) {
       return angle;
     }
 }
+
+function floor(dividend, divisor){
+  const quotient = Math.floor(dividend / divisor)
+  return quotient
+}

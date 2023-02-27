@@ -115,3 +115,4 @@ function largest_drawable_square(start_x, end_x, start_y, end_y) {
     return { start_x, end_x, start_y, end_y, width, height };
 }
 
+//TODO: add a floor division functions?
