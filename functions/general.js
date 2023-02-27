@@ -39,20 +39,6 @@ function random_integer_in_range(lower_limit, upper_limit){
   return Math.floor( (Math.random() * (upper_limit - lower_limit)) + lower_limit)
 }
 
-function largest(number_1, number_2){
-  if (number_1 >= number_2){
-    return number_1
-  }
-  return number_2
-}
-
-function smallest(number_1, number_2){
-  if (number_1 <= number_2){
-    return number_1
-  }
-  return number_2
-}
-
 function clear_all_intervals(){
   for (let i = 0; i < 100; i++) {
     window.clearInterval(i)    

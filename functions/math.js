@@ -27,3 +27,17 @@ function floor(dividend, divisor){
   const quotient = Math.floor(dividend / divisor)
   return quotient
 }
+
+function largest(number_1, number_2){
+  if (number_1 >= number_2){
+    return number_1
+  }
+  return number_2
+}
+
+function smallest(number_1, number_2){
+  if (number_1 <= number_2){
+    return number_1
+  }
+  return number_2
+}
