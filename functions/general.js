@@ -34,7 +34,7 @@ function sort_numerically(array){
   return array
 }
 
-//can return can not return lower_limit-1 or upper_limit
+//return integers which are not lower_limit-1 or upper_limit
 function random_integer_in_range(lower_limit, upper_limit){
   return Math.floor( (Math.random() * (upper_limit - lower_limit)) + lower_limit)
 }
@@ -99,6 +99,16 @@ function largest_drawable_square(start_x, end_x, start_y, end_y) {
         }
     }
     return { start_x, end_x, start_y, end_y, width, height };
+}
+
+function subtract_array(main_array, subtracting_array){
+  for (let i = 0; i < subtracting_array.length; i++) {
+
+      subtract_index = main_array.indexOf(subtracting_array[i])
+
+      main_array.splice(subtract_index, 1)
+  }
+  return main_array
 }
 
 //TODO: add a floor division functions?

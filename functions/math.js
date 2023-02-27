@@ -41,3 +41,53 @@ function smallest(number_1, number_2){
   }
   return number_2
 }
+
+function array_largest(array){
+  let max
+  for (let i = 0; i < array.length; i++) {
+
+    if (array[i] > max) {
+      max = array[i]
+    }
+  }
+  return max
+}
+
+function array_smallest(array){
+  let min = Infinity
+  for (let i = 0; i < array.length; i++) {
+      if (array[i] < min) {
+      min = array[i]
+      }
+  }
+  return min
+}
+
+
+function array_variation_width(array){
+  let max = -Infinity
+  let min = Infinity
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < min) {
+    min = array[i]
+    }
+
+    if (array[i] > max) {
+    max = array[i]
+    }
+  }
+
+  const variation = max - min
+  return variation
+}
+
+function array_average(array){
+  let sum = 0
+
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i]
+  }
+  const average = sum / array.length
+  return average
+}

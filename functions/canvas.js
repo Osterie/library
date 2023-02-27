@@ -13,7 +13,7 @@ function fill_largest_font_centered(canvas, text, font, y_postion, color){
     ctx.fillText(text, canvas_center_x, y_postion);
 }
   
-  function largest_font_size(canvas, text, font){
+function largest_font_size(canvas, text, font){
     
     const temporary_canvas = document.createElement('canvas');
     const temporary_ctx = temporary_canvas.getContext("2d");
@@ -44,9 +44,8 @@ function draw_background(canvas, color){
     ctx.fillStyle = color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-  
 
-  function update_image(canvas, img){
+function update_image(canvas, img){
     dataURL = canvas.toDataURL();
     img.src = dataURL;
 }
