@@ -29,12 +29,70 @@ function is_between_or_equal(value_1, value_2, value_3){
   return false
 }
 
-function sort_numerically(array){
+function repeating_values(array){
+  let repeated_values = []
+
+  for (let i = 0; i < array.length; i++) {
+
+      const testing_number = array[i]
+
+      array.splice(i, 1)
+      if (array.includes(testing_number) && !repeated_values.includes(testing_number)) {
+          repeated_values.push(testing_number)
+      }
+      i -= 1
+  }
+  return repeated_values
+}
+
+function revese_array(array) {
+
+  for (let i = 0; i < Math.floor(array.length/2); i++) {
+      const temp = array[i]
+      array[i] = array[array.length - i - 1]    
+      array[array.length - i - 1] = temp
+  }
+  return array
+}   
+
+function sort_ascending(array){
   array.sort(function(a, b) {return a - b;});
   return array
 }
 
-//return integers which are not lower_limit-1 or upper_limit
+function sort_descending(array){
+  array.sort(function(a, b) {return b - a;});
+  return array
+}
+
+function array_random_ints(amount, lowest, largest) {
+  const array = []
+  for (let i = 0; i < amount; i++) {
+      array.push(random_integer_in_range(lowest, largest))
+  }
+  return array
+}
+
+function remove_random_values(array, amount){
+
+  const removed_values = []
+
+  for (let i = 0; i < amount; i++) {
+      const random_value = random_integer_in_range(0, array.length)
+      removed_values.push(array.splice(random_value, 1).join())
+  }
+  return removed_values
+}
+
+function fill_array_ints(amount) {
+  const array = []
+  for (let i = 0; i < amount; i++) {
+      array.push(i)
+  }
+  return array
+}
+
+//return integers which are not from and including lower_limit, to but not including upper_limit
 function random_integer_in_range(lower_limit, upper_limit){
   return Math.floor( (Math.random() * (upper_limit - lower_limit)) + lower_limit)
 }
