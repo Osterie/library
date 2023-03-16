@@ -1,5 +1,10 @@
 //----------------------GENERAL-----------------------------
 
+function is_odd(int){
+  return int % 2
+}
+
+
 function multiply_string(string, times){
   new_string = string
   for (let i = 0; i < times; i++) {
@@ -7,7 +12,7 @@ function multiply_string(string, times){
   }
   return new_string
 }
-  
+
 //takes axis as arguments, if one of the axis of object 2 is between the two axis of object 1, returns true
 function object_collides(object_1_lower, object_1_upper, object_2_lower, object_2_upper){
   // object 2 lower value axis is between object 1 lower value of axis and object 1 upper value of axis
