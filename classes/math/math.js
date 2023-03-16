@@ -99,6 +99,16 @@ function simplifying_sqrt(number){
             rest *= number * (number_instances % 2)
         }
     }
+
+    if (rest === 1){
+        return `${coefficient}`
+    }
+
+    if (coefficient === 1){
+        return `Sqrt(${rest})`
+
+    }
+
     return `${coefficient}*Sqrt(${rest})`
 }
 
@@ -128,18 +138,9 @@ function count_remove_instances(array, item){
 }
 
 function is_odd(int){
-    if (int % 2 === 0){
-        return false
-    }
-    return true
+    return (int % 2)
 }
 
-function is_par(int){
-    if (int % 2 === 0){
-        return true
-    }
-    return false
-}
 
-const simp_exp = simplifying_sqrt(4168908)
+const simp_exp = simplifying_sqrt(8)
 console.log(simp_exp)
