@@ -82,19 +82,21 @@ function simplifying_sqrt(number){
     const factores = factorize(number) 
     let coefficient = 1
     let rest = 1
-    
+
     for (let i = 0; i <= factores.length; i++) {
+
         const number = factores[0]
         const number_instances = count_remove_instances(factores, number)
-        if (number_instances != 0){
-            i = 0
 
-            if (number_instances != 1){
-                coefficient *= (number * (floor(number_instances, 2)))
-            }
-            if (is_odd(number_instances)){
-                rest *= number * (number_instances % 2)
-            }
+        if (number_instances === 0){continue}
+
+        i = 0
+
+        if (number_instances != 1){
+            coefficient *= (number ** floor(number_instances, 2) )
+        }
+        if (is_odd(number_instances)){
+            rest *= number * (number_instances % 2)
         }
     }
     return `${coefficient}*Sqrt(${rest})`
@@ -116,6 +118,7 @@ function count_remove_instances(array, item){
             const subtract_index = array.indexOf(item)
             //fjerner verdien på plassen vi fant
             array.splice(subtract_index, 1)
+            i -=1
         }
 
     }
@@ -138,5 +141,5 @@ function is_par(int){
     return false
 }
 
-const simp_exp = simplifying_sqrt(4168)
+const simp_exp = simplifying_sqrt(4168908)
 console.log(simp_exp)
