@@ -10,13 +10,13 @@ class Vector_3d{
     constructor(x, y, z){
         this.vector = [x, y, z]
         this.absolute_value = Math.sqrt(x**2 + y**2 + z**2)
-        this.shortened_expression_abs = simplifying_sqrt(x**2 + y**2 + z**2)
+        // this.shortened_expression_abs = simplifying_sqrt(x**2 + y**2 + z**2)
     }
 }
 
 const test_vector = new Vector_3d(1,2,3)
 
-console.log(test_vector.absolute_value)
+// console.log(test_vector.absolute_value)
 
 class Room_geometry{
 
@@ -77,13 +77,69 @@ function factorize(int){
 }
 
 
-const test_numb = 13
-
-const factor = factorize(test_numb)
-
-console.log(factor)
 
 function simplifying_sqrt(number){
+    const factores = factorize(number) 
+    let coefficient = 1
+    let rest = 1
 
-    //returns strin
+    for (let i = 0; i <= factores.length; i++) {
+
+        const number = factores[0]
+        const number_instances = count_remove_instances(factores, number)
+
+        if (number_instances === 0){continue}
+
+        i = 0
+
+        if (number_instances != 1){
+            coefficient *= (number ** floor(number_instances, 2) )
+        }
+        if (is_odd(number_instances)){
+            rest *= number * (number_instances % 2)
+        }
+    }
+    return `${coefficient}*Sqrt(${rest})`
 }
+
+
+
+function floor(dividend, divisor){
+    const quotient = Math.floor(dividend / divisor)
+    return quotient
+  }
+
+function count_remove_instances(array, item){
+    const length_before = array.length
+
+    for (let i = 0; i <= array.length; i++) {
+        //finnere indexen til det gitte tallet, om det finnes
+        if (array.indexOf(item) != -1){
+            const subtract_index = array.indexOf(item)
+            //fjerner verdien på plassen vi fant
+            array.splice(subtract_index, 1)
+            i -=1
+        }
+
+    }
+    const length_after = array.length
+    const instances = length_before-length_after
+    return instances
+}
+
+function is_odd(int){
+    if (int % 2 === 0){
+        return false
+    }
+    return true
+}
+
+function is_par(int){
+    if (int % 2 === 0){
+        return true
+    }
+    return false
+}
+
+const simp_exp = simplifying_sqrt(4168908)
+console.log(simp_exp)
