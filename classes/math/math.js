@@ -144,12 +144,26 @@ function is_odd(int){
 const simp_exp = simplifying_sqrt(8)
 console.log(simp_exp)
 
-function simplifying_division(number){
-    const decimals = count_decimals(number)
+function simplifying_division(dividend, divisor){
+    const dividend_facotres = factorize(dividend)
+    const divisor_facotres = factorize(divisor)
+
+    console.log(dividend_facotres)
+    console.log(divisor_facotres)
+    console.log(subtract_array(dividend_facotres, divisor_facotres), 'hei')
+    
 }
 
-function count_decimals(number){
-    let number_string = number.toString();
-    const decimalCount = (number_string.split('.')[1] || []).length;
-    return decimalCount
-}
+simplifying_division(10, 3)
+
+
+function subtract_array(main_array, subtracting_array){
+    for (let i = 0; i < subtracting_array.length; i++) {
+  
+        subtract_index = main_array.indexOf(subtracting_array[i])
+        if (subtract_index !== -1){
+            main_array.splice(subtract_index, 1)
+        }
+    }
+    return main_array
+  }
