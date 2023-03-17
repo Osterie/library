@@ -5,7 +5,6 @@ class Vector_2d{
     }
 }
 
-
 class Vector_3d{
     constructor(x, y, z){
         this.vector = [x, y, z]
@@ -144,3 +143,13 @@ function is_odd(int){
 
 const simp_exp = simplifying_sqrt(8)
 console.log(simp_exp)
+
+function simplifying_division(number){
+    const decimals = count_decimals(number)
+}
+
+function count_decimals(number){
+    let number_string = number.toString();
+    const decimalCount = (number_string.split('.')[1] || []).length;
+    return decimalCount
+}
