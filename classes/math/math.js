@@ -8,14 +8,16 @@ class Vector_2d{
 class Vector_3d{
     constructor(x, y, z){
         this.vector = [x, y, z]
-        this.absolute_value = Math.sqrt(x**2 + y**2 + z**2)
-        // this.shortened_expression_abs = simplifying_sqrt(x**2 + y**2 + z**2)
+        this.length = Math.sqrt(x**2 + y**2 + z**2)
+        this.length_shortened = simplifying_sqrt(x**2 + y**2 + z**2)
     }
 }
 
-const test_vector = new Vector_3d(1,2,3)
+const test_vector = new Vector_3d(3,3,3)
+const test_vector_2 = new Vector_3d(3,3,3)
+console.log(test_vector.length)
+console.log(test_vector.length_shortened)
 
-// console.log(test_vector.absolute_value)
 
 class Room_geometry{
 
@@ -23,11 +25,26 @@ class Room_geometry{
 
     }
 
-    sum_vectors(vector1, vector2){
-       return  
+    add_vectors(vector1, vector2){
+       return  [vector1[0] + vector2[0], vector1[1] + vector2[1], vector1[2] + vector2[2]]
     }
 
-    sub_vectors(vector1, vector2){
+    subtract_vectors(vector1, vector2){
+        return [vector1[0] - vector2[0], vector1[1] - vector2[1], vector1[2] - vector2[2]]
+    }
+
+    scalar_product(vector1, vector2){
+        return vector1[0] * vector2[0] + vector1[1] * vector2[1] + vector1[2] * vector2[2]
+    }
+
+    multiply_with_constant(vector, constant){
+        return [vector[0] * constant, vector[1] * constant, vector[2] * constant]
+    }
+
+    vector_product(vector1, vector2)
+
+    are_parallel(vector1, vector2){
+        
         return
     }
 
@@ -140,16 +157,42 @@ function is_odd(int){
     return (int % 2)
 }
 
+function simplifying_division(dividend, divisor){
+    const dividend_facotres = factorize(dividend)
+    const divisor_facotres = factorize(divisor)
+    const dividend_facotres_copy = factorize(dividend)
 
-const simp_exp = simplifying_sqrt(8)
-console.log(simp_exp)
+    const shortened_divident_array = subtract_array(dividend_facotres, divisor_facotres)
+    const shortened_divisor_array = subtract_array(divisor_facotres, dividend_facotres_copy)
 
-function simplifying_division(number){
-    const decimals = count_decimals(number)
+    let shortened_divident = multiplied_array_values(shortened_divident_array)
+    let shortened_divisor = multiplied_array_values(shortened_divisor_array)
+
+    if (shortened_divisor_array.length === 0){
+        return `${shortened_divident}`    
+    }
+
+    return `${shortened_divident} / ${shortened_divisor}`
 }
 
-function count_decimals(number){
-    let number_string = number.toString();
-    const decimalCount = (number_string.split('.')[1] || []).length;
-    return decimalCount
+
+
+function subtract_array(main_array, subtracting_array){
+    for (let i = 0; i < subtracting_array.length; i++) {
+  
+        subtract_index = main_array.indexOf(subtracting_array[i])
+        if (subtract_index !== -1){
+            main_array.splice(subtract_index, 1)
+        }
+    }
+    return main_array
+}
+
+function multiplied_array_values(array){
+    let product = 1
+    for (let i = 0; i < array.length; i++) {
+
+        product *= array[i]
+    }
+    return product
 }

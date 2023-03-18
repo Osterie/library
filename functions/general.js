@@ -168,10 +168,15 @@ function subtract_array(main_array, subtracting_array){
   for (let i = 0; i < subtracting_array.length; i++) {
 
       subtract_index = main_array.indexOf(subtracting_array[i])
-
-      main_array.splice(subtract_index, 1)
+      if (subtract_index !== -1){
+          main_array.splice(subtract_index, 1)
+      }
   }
   return main_array
 }
 
-//TODO: add a floor division functions?
+function count_decimals(number){
+  let number_string = number.toString();
+  const decimalCount = (number_string.split('.')[1] || []).length;
+  return decimalCount
+}
