@@ -41,11 +41,21 @@ class Room_geometry{
         return [vector[0] * constant, vector[1] * constant, vector[2] * constant]
     }
 
-    vector_product(vector1, vector2)
+    vector_product(vector1, vector2){
+
+    }
 
     are_parallel(vector1, vector2){
         
         return
+    }
+
+    are_ortogonal(vector1, vector2){
+
+        if (vector1[0] * vector2[0] + vector1[1] * vector2[1] + vector1[2] * vector2[2] === 0){
+            return true
+        }
+        return false
     }
 
     //Returns angle between two vectors, unit can be "deg" or radians
