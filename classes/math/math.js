@@ -13,10 +13,7 @@ class Vector_3d{
     }
 }
 
-const test_vector = new Vector_3d(3,3,3)
-const test_vector_2 = new Vector_3d(3,3,3)
-console.log(test_vector.length)
-console.log(test_vector.length_shortened)
+
 
 
 class Room_geometry{
@@ -82,7 +79,14 @@ class Room_geometry{
     }
 }
 
+const test_vector = new Vector_3d(3,0,0)
+const test_vector_2 = new Vector_3d(3,3,3)
+console.log(test_vector.length)
+console.log(test_vector.length_shortened)
 
+const test_room = new Room_geometry
+
+console.log(test_room.are_ortogonal(test_vector.vector, test_vector_2.vector))
 
 function create_3d_vector_from_points(point_a, point_b){
     const vector = [ (point_b[0] - point_a[0]) , (point_b[1] - point_a[1]), (point_b[2] - point_a[2]) ]
@@ -175,8 +179,8 @@ function simplifying_division(dividend, divisor){
     const shortened_divident_array = subtract_array(dividend_facotres, divisor_facotres)
     const shortened_divisor_array = subtract_array(divisor_facotres, dividend_facotres_copy)
 
-    let shortened_divident = multiplied_array_values(shortened_divident_array)
-    let shortened_divisor = multiplied_array_values(shortened_divisor_array)
+    let shortened_divident = array_values_multiplied(shortened_divident_array)
+    let shortened_divisor = array_values_multiplied(shortened_divisor_array)
 
     if (shortened_divisor_array.length === 0){
         return `${shortened_divident}`    
@@ -198,7 +202,7 @@ function subtract_array(main_array, subtracting_array){
     return main_array
 }
 
-function multiplied_array_values(array){
+function array_values_multiplied(array){
     let product = 1
     for (let i = 0; i < array.length; i++) {
 
