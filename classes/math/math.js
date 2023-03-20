@@ -40,6 +40,7 @@ class Room_geometry{
 
     vector_product(vector1, vector2){
 
+        return [vector1[1]*vector2[2] - vector1[2]*vector2[1] , vector1[2]*vector2[0] - vector1[0]*vector2[2] , vector1[0]*vector2[1] - vector1[1]*vector2[0]]
     }
 
     are_parallel(vector1, vector2){
