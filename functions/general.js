@@ -1,5 +1,6 @@
 //----------------------GENERAL-----------------------------
 
+
 function is_odd(int){
   return int % 2
 }
