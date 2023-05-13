@@ -43,7 +43,7 @@ function smallest(number_1, number_2){
 }
 
 function array_largest(array){
-  let max
+  let max = -Infinity
   for (let i = 0; i < array.length; i++) {
 
     if (array[i] > max) {
